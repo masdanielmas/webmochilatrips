@@ -1,0 +1,1042 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Navbar */
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+nav ul li {
+    background-color: #0077b6;
+    /* Azul */
+    padding: 8px 15px;
+    /* Espaciado interno */
+    border-radius: 5px;
+    /* Bordes redondeados */
+}
+
+/* Enlace dentro del li */
+nav ul li a {
+    color: #0077b6;
+    text-decoration: none;
+    font-weight: bold;
+    display: block;
+}
+
+
+.logo {
+    width: 150px;
+    /* Cambia este valor para hacer el logo más grande o más pequeño */
+    height: auto;
+    /* Mantiene la proporción correcta */
+}
+
+
+/* Estilos del cuerpo */
+body {
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Navbar */
+header {
+    background: #ffffff;
+    padding: 1rem;
+    text-align: center;
+}
+
+nav h1 {
+    color: white;
+    margin-bottom: 10px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0.5rem;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.hero {
+    position: relative;
+    background: url('/assets/viaje.jpg') center/cover;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    /* Mantiene el texto en blanco */
+    padding: 100px;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    /* Capa oscura encima de la imagen */
+    z-index: 1;
+}
+
+.hero h2,
+.hero p,
+.hero .btn {
+    position: relative;
+    z-index: 2;
+    /* Mantiene el texto encima de la capa oscura */
+}
+
+.hero h2 {
+    font-size: 2.5rem;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #ff6f61;
+    color: white;
+    text-decoration: none;
+    margin-top: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.btn:hover {
+    background: #ff5733;
+}
+
+/* Destinos Destacados */
+.destinos-destacados {
+    text-align: center;
+    padding: 40px 20px;
+    background: #eef;
+}
+
+.destinos-destacados h2 {
+    margin-bottom: 20px;
+}
+
+.destinos {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.destino {
+    text-align: center;
+}
+
+.destino img {
+    width: 200px;
+    height: 150px;
+    border-radius: 10px;
+    transition: transform 0.3s;
+}
+
+.destino img:hover {
+    transform: scale(1.1);
+}
+
+/* Estilos para los textos de destinos */
+.destino p {
+    font-size: 1.2rem;
+    /* Un poco más pequeño */
+    font-weight: 500;
+    /* Menos grueso que bold (500 es semibold) */
+    color: #004aad;
+    /* Azul fuerte para contraste */
+    text-transform: capitalize;
+    /* Primera letra en mayúscula */
+    text-align: center;
+    margin-top: 10px;
+    letter-spacing: 1px;
+    /* Espaciado entre letras para mejor lectura */
+}
+
+/* Efecto al pasar el mouse */
+.destino p:hover {
+    color: #ff6f61;
+    /* Cambia a rojo-naranja */
+    transform: scale(1.05);
+    /* Ligero aumento al hacer hover */
+    transition: 0.3s ease-in-out;
+}
+
+/* Estilo llamativo para "Destinos Populares" */
+.destinos-destacados h2 {
+    font-size: 2rem;
+    /* Tamaño más grande */
+    font-weight: bold;
+    /* Negrita */
+    color: #000000;
+    /* Color rojo-naranja vibrante */
+    text-align: center;
+    text-transform: uppercase;
+    /* Convierte el texto en mayúsculas */
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+    /* Agrega sombra para mejorar la visibilidad */
+    position: relative;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+/* Subrayado animado */
+.destinos-destacados h2::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    background: #0077b6;
+    /* Azul oscuro para contraste */
+    left: 0;
+    bottom: 0;
+    transform: scaleX(0);
+    /* Inicialmente invisible */
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Efecto al pasar el mouse */
+.destinos-destacados h2:hover::after {
+    transform: scaleX(1);
+    /* Muestra el subrayado al hacer hover */
+}
+
+/* Footer */
+footer {
+    background: #0077b6;
+    text-align: center;
+    padding: 10px;
+    color: white;
+    margin-top: 20px;
+}
+
+/* Sección de Registro */
+.registro-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.registro-container h2 {
+    font-size: 2rem;
+    color: #0077b6;
+    margin-bottom: 10px;
+}
+
+.registro-container p {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.registro-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.registro-form label {
+    text-align: left;
+    font-weight: bold;
+    color: #0077b6;
+}
+
+.registro-form input {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #0077b6;
+    border-radius: 5px;
+    outline: none;
+    font-size: 1rem;
+}
+
+.registro-form input:focus {
+    border-color: #ff6f61;
+}
+
+.btn {
+    background: #ff6f61;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.btn:hover {
+    background: #ff5733;
+}
+
+/* Registro con Google y Facebook */
+.registro-social {
+    margin-top: 20px;
+}
+
+.registro-social p {
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.btn-google,
+.btn-facebook {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-google {
+    background: #db4437;
+    color: white;
+    border: none;
+}
+
+.btn-facebook {
+    background: #3b5998;
+    color: white;
+    border: none;
+}
+
+.btn-google:hover {
+    background: #b32e1f;
+}
+
+.btn-facebook:hover {
+    background: #2a4374;
+}
+
+/* Texto secundario */
+.texto-secundario {
+    margin-top: 10px;
+    font-size: 0.9rem;
+}
+
+.texto-secundario a {
+    color: #0077b6;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.texto-secundario a:hover {
+    text-decoration: underline;
+}
+
+/* Panel de Usuario */
+.perfil-container {
+    width: 90%;
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.perfil-container h2 {
+    font-size: 2rem;
+    color: #0077b6;
+    margin-bottom: 10px;
+}
+
+/* Foto de perfil */
+.perfil-foto {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+    border: 3px solid #0077b6;
+}
+
+/* Información del usuario */
+.perfil-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.datos p {
+    font-size: 1rem;
+    color: #333;
+}
+
+/* Botón Editar */
+.btn {
+    background: #ff6f61;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.btn:hover {
+    background: #ff5733;
+}
+
+/* Historial de Viajes */
+.historial-viajes {
+    width: 90%;
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.historial-viajes ul {
+    list-style: none;
+    padding: 0;
+}
+
+.historial-viajes li {
+    font-size: 1rem;
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Configuración */
+.configuracion {
+    width: 90%;
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Botón de Cerrar Sesión */
+.btn-danger {
+    background: #d9534f;
+}
+
+.btn-danger:hover {
+    background: #c9302c;
+}
+
+
+/* Sección de Creación de Plan de Viaje */
+.plan-container {
+    width: 90%;
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.plan-container h2 {
+    font-size: 2rem;
+    color: #0077b6;
+    margin-bottom: 10px;
+}
+
+.plan-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.plan-form label {
+    text-align: left;
+    font-weight: bold;
+    color: #0077b6;
+}
+
+.plan-form input,
+.plan-form select {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #0077b6;
+    border-radius: 5px;
+    outline: none;
+    font-size: 1rem;
+}
+
+.plan-form input:focus,
+.plan-form select:focus {
+    border-color: #ff6f61;
+}
+
+/* Planes Guardados */
+.planes-guardados {
+    width: 90%;
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.planes-guardados ul {
+    list-style: none;
+    padding: 0;
+}
+
+.planes-guardados li {
+    font-size: 1rem;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Botones pequeños */
+.btn-small {
+    padding: 5px 10px;
+    font-size: 0.9rem;
+}
+
+
+/* Sección de Búsqueda */
+.busqueda-destinos {
+    text-align: center;
+    padding: 20px;
+}
+
+.busqueda-destinos input,
+.busqueda-destinos select {
+    padding: 10px;
+    margin: 10px;
+    border: 2px solid #0077b6;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+/* Lista de Destinos */
+.lista-destinos {
+    text-align: center;
+    padding: 40px 20px;
+    background: #eef;
+}
+
+.lista-destinos h2 {
+    margin-bottom: 20px;
+}
+
+.destinos {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.destino {
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.destino:hover {
+    transform: scale(1.05);
+}
+
+.destino img {
+    width: 200px;
+    height: 150px;
+    border-radius: 10px;
+}
+
+/* Comparación de Destinos */
+.comparacion-destinos {
+    text-align: center;
+    padding: 30px;
+}
+
+.comparacion-destinos select {
+    padding: 10px;
+    margin: 10px;
+    border: 2px solid #0077b6;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+#resultado-comparacion {
+    margin-top: 20px;
+    font-weight: bold;
+    color: #ff6f61;
+}
+
+
+/* Sección de Reservas */
+.reservas-container {
+    width: 90%;
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.reservas-container h2 {
+    font-size: 2rem;
+    color: #0077b6;
+    margin-bottom: 10px;
+}
+
+.reservas-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.reservas-form label {
+    text-align: left;
+    font-weight: bold;
+    color: #0077b6;
+}
+
+.reservas-form input,
+.reservas-form select {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #0077b6;
+    border-radius: 5px;
+    outline: none;
+    font-size: 1rem;
+}
+
+.reservas-form input:focus,
+.reservas-form select:focus {
+    border-color: #ff6f61;
+}
+
+/* Lista de Reservas */
+.reservas-lista {
+    width: 90%;
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.reservas-lista ul {
+    list-style: none;
+    padding: 0;
+}
+
+.reservas-lista li {
+    font-size: 1rem;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Botón Cancelar */
+.btn-cancelar {
+    background: #d9534f;
+    color: white;
+    border: none;
+    padding: 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.btn-cancelar:hover {
+    background: #c9302c;
+}
+
+/* Sección de Reservas en la Página Principal */
+.reservas-destacadas {
+    text-align: center;
+    padding: 40px 20px;
+    background: #eef;
+}
+
+.reservas-destacadas h2 {
+    font-size: 2rem;
+    color: #0077b6;
+    margin-bottom: 10px;
+}
+
+.reservas-destacadas p {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.reservas-destacadas .btn {
+    padding: 10px 20px;
+    background: #ff6f61;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.reservas-destacadas .btn:hover {
+    background: #ff5733;
+}
+
+
+/* Sección para Crear Publicaciones */
+.crear-publicacion {
+    width: 90%;
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.crear-publicacion h2 {
+    font-size: 2rem;
+    color: #0077b6;
+    margin-bottom: 10px;
+}
+
+#texto-publicacion {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #0077b6;
+    border-radius: 5px;
+    font-size: 1rem;
+    resize: vertical;
+    min-height: 100px;
+}
+
+#imagen-publicacion {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.btn {
+    margin-top: 10px;
+}
+
+/* Feed de Publicaciones */
+.feed-publicaciones {
+    width: 90%;
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.feed-publicaciones h2 {
+    font-size: 2rem;
+    color: #0077b6;
+    margin-bottom: 10px;
+}
+
+.publicacion {
+    background: #eef;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 10px;
+    text-align: left;
+}
+
+.publicacion img {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.comentarios {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+/* Sección de Comentarios en la Página Principal */
+.comentarios-destacados {
+    text-align: center;
+    padding: 40px 20px;
+    background: #eef;
+}
+
+.comentarios-destacados h2 {
+    font-size: 2rem;
+    color: #0077b6;
+    margin-bottom: 10px;
+}
+
+.comentarios-destacados p {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.comentarios-destacados .btn {
+    padding: 10px 20px;
+    background: #ff6f61;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.comentarios-destacados .btn:hover {
+    background: #ff5733;
+}
+
+/* Sección del Chatbot */
+.chatbot-container {
+    width: 90%;
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.chatbot-container h2 {
+    font-size: 2rem;
+    color: #0077b6;
+    margin-bottom: 10px;
+}
+
+.chatbot-container p {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+/* Ventana de Chat */
+.chat-window {
+    background: #eef;
+    padding: 15px;
+    border-radius: 10px;
+    height: 300px;
+    overflow-y: auto;
+    text-align: left;
+}
+
+#chat-messages {
+    max-height: 250px;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+.bot-message,
+.user-message {
+    padding: 8px 12px;
+    margin: 5px 0;
+    border-radius: 5px;
+    display: inline-block;
+    max-width: 80%;
+}
+
+.bot-message {
+    background: #0077b6;
+    color: white;
+}
+
+.user-message {
+    background: #ff6f61;
+    color: white;
+    align-self: flex-end;
+}
+
+/* Input y Botón */
+#chat-input {
+    width: 80%;
+    padding: 10px;
+    border: 2px solid #0077b6;
+    border-radius: 5px;
+    font-size: 1rem;
+    outline: none;
+    margin-top: 10px;
+}
+
+.btn {
+    padding: 10px 15px;
+    background: #ff6f61;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.btn:hover {
+    background: #ff5733;
+}
+
+/* Sección del Chatbot en la Página Principal */
+.chatbot-destacado {
+    text-align: center;
+    padding: 40px 20px;
+    background: #eef;
+}
+
+.chatbot-destacado h2 {
+    font-size: 2rem;
+    color: #0077b6;
+    margin-bottom: 10px;
+}
+
+.chatbot-destacado p {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.chatbot-destacado .btn {
+    padding: 10px 20px;
+    background: #ff6f61;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.chatbot-destacado .btn:hover {
+    background: #ff5733;
+}
+
+
+/* Sección de Exportar Itinerario */
+.exportar-container {
+    width: 90%;
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.exportar-container h2 {
+    font-size: 2rem;
+    color: #0077b6;
+    margin-bottom: 10px;
+}
+
+.exportar-container p {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.itinerario {
+    background: #eef;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: left;
+}
+
+.itinerario h3 {
+    color: #0077b6;
+}
+
+.itinerario ul {
+    list-style: none;
+    padding: 0;
+}
+
+.itinerario li {
+    font-size: 1rem;
+    padding: 5px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+/* Input y Botón */
+#correo-destino {
+    width: 80%;
+    padding: 10px;
+    border: 2px solid #0077b6;
+    border-radius: 5px;
+    font-size: 1rem;
+    outline: none;
+    margin-top: 10px;
+}
+
+/* Sección de Exportación de Itinerario */
+.exportar-destacado {
+    text-align: center;
+    padding: 40px 20px;
+    background: #eef;
+}
+
+.exportar-destacado h2 {
+    font-size: 2rem;
+    color: #0077b6;
+    margin-bottom: 10px;
+}
+
+.exportar-destacado p {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.exportar-btn {
+    background: #28a745;
+    /* Verde para diferenciarlo */
+}
+
+.exportar-btn:hover {
+    background: #218838;
+}
