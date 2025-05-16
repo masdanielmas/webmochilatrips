@@ -1,1 +1,60 @@
-<p>planes works!</p>
+<!-- Navbar -->
+<header>
+    <nav>
+        <div class="logo-container">
+            <img src="assets/logomochila.jpg" alt="Logo de MochilaTrips" class="logo">
+        </div>
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="destinos.html">Destinos</a></li>
+            <li><a href="plan-viaje.html">Planes</a></li>
+            <li><a href="usuario.html">Perfil</a></li>
+            <li><a href="index.html" onclick="cerrarSesion()">Cerrar Sesión</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- Sección de Creación de Plan de Viaje -->
+<section class="plan-container">
+    <h2>Crear un Plan de Viaje</h2>
+    <p>Organiza tu próximo viaje fácilmente.</p>
+
+    <form class="plan-form">
+        <label for="destino">Destino</label>
+        <input type="text" id="destino" placeholder="Ejemplo: París, Francia" required>
+
+        <label for="fecha-inicio">Fecha de Inicio</label>
+        <input type="date" id="fecha-inicio" required>
+
+        <label for="fecha-fin">Fecha de Fin</label>
+        <input type="date" id="fecha-fin" required>
+
+        <label for="tipo-viaje">Tipo de Viaje</label>
+        <select id="tipo-viaje">
+            <option value="familiar">Familiar</option>
+            <option value="aventura">Aventura</option>
+            <option value="solitario">Solitario</option>
+            <option value="pareja">En pareja</option>
+            <option value="lujo">Lujo</option>
+        </select>
+
+        <label for="presupuesto">Presupuesto Estimado ($USD)</label>
+        <input type="number" id="presupuesto" placeholder="Ejemplo: 1000" required>
+
+        <button type="submit" class="btn">Guardar Plan</button>
+    </form>
+</section>
+
+<!-- Lista de Planes Guardados -->
+<section class="planes-guardados">
+    <h2>Mis Planes de Viaje</h2>
+    <ul id="lista-planes">
+        <li>🌍 Viaje a Roma - Marzo 2025 ($1500) <button class="btn btn-small btn-edit">Editar</button></li>
+        <li>🏝 Vacaciones en Maldivas - Julio 2024 ($3000) <button class="btn btn-small btn-edit">Editar</button></li>
+    </ul>
+</section>
+
+<!-- Footer -->
+<footer>
+    <p>&copy; 2025 MochilaTrips - Todos los derechos reservados</p>
+</footer>
