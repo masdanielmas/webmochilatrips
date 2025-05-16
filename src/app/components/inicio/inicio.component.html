@@ -18,6 +18,20 @@
     </nav>
 </header>
 
+
+<div class="dropdown"
+     (mouseenter)="showDropdown = true"
+     (mouseleave)="showDropdown = false"
+>
+  <button class="dropbtn">Menú ▼</button>
+  <div class="dropdown-content" [class.show]="showDropdown">
+    <a href="/destinos">Destinos</a>
+    <a href="/planes">Planes</a>
+    <a href="/reservas">Reservas</a>
+  </div>
+</div>
+
+
 <section class="hero">
     <h2>Descubre el mundo con MochilaTrips</h2>
     <p>Organiza tus viajes de manera fácil y eficiente.</p>
@@ -69,3 +83,4 @@
 <footer>
     <p>&copy; 2025 MochilaTrips - Todos los derechos reservados</p>
 </footer>
+

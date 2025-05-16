@@ -1,3 +1,83 @@
+/* Para el menú */
+.dropdown {
+  position: relative;
+  display: inline-block;
+  margin-top: -20px; /* Esto lo sube */
+}
+
+.dropbtn {
+  background-color: #0077b6;
+  color: white;
+  padding: 5px 15px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  height: 35px;
+  line-height: 20px;
+  font-weight: bold;
+}
+
+/* Contenedor del contenido desplegable */
+.dropdown-content {
+  position: absolute;
+  top: 100%; /* justo debajo del botón */
+  left: 0;
+  background-color: rgba(255, 87, 51, 0.9); /* #ff5733 traslúcido */
+  min-width: 160px;
+  border-radius: 4px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 1000;
+}
+
+/* Estilo para los enlaces del menú */
+.dropdown-content a {
+  color: white;
+  font-weight: bold;
+  padding: 10px 15px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Hover sobre cada opción */
+.dropdown-content a:hover {
+  background-color: rgba(200, 50, 20, 0.95); /* un poco más oscuro */
+}
+
+/* Mostrar el menú al hacer hover en el contenedor */
+.dropdown:hover .dropdown-content {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* Reset básico */
 * {
     margin: 0;
