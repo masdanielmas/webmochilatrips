@@ -1,11 +1,19 @@
 <!-- inicio.component.html -->
 
 <header>
-    <nav>
+    <nav> <!-- Barra de Navegacion -->
         <div class="logo-container">
             <img src="/assets/logomochila.jpg" alt="Logo de MochilaTrips" class="logo">
         </div>
         <ul>
+            <div class="dropdown" (mouseenter)="showDropdown = true" (mouseleave)="showDropdown = false">
+                <button class="dropbtn">Menú ▼</button>
+                <div class="dropdown-content" [class.show]="showDropdown">
+                    <a href="/destinos">Destinos</a>
+                    <a href="/planes">Planes</a>
+                    <a href="/reservas">Reservas</a>
+                </div>
+            </div>
             <li><a routerLink="/">Inicio</a></li>
             <li><a href="/destinos">Destinos</a></li>
             <li><a href="/planes">Planes</a></li>
@@ -14,23 +22,10 @@
             <li><a href="/chatbot">Chatbot</a></li>
             <li><a href="/registro">Registro</a></li>
             <li><a href="/perfil">Perfil</a></li>
+
         </ul>
-    </nav>
+    </nav> <!-- cierra Barra de Navegacion -->
 </header>
-
-
-<div class="dropdown"
-     (mouseenter)="showDropdown = true"
-     (mouseleave)="showDropdown = false"
->
-  <button class="dropbtn">Menú ▼</button>
-  <div class="dropdown-content" [class.show]="showDropdown">
-    <a href="/destinos">Destinos</a>
-    <a href="/planes">Planes</a>
-    <a href="/reservas">Reservas</a>
-  </div>
-</div>
-
 
 <section class="hero">
     <h2>Descubre el mundo con MochilaTrips</h2>
@@ -60,15 +55,18 @@
     <h2>Destinos Populares</h2>
     <div class="destinos">
         <div class="destino">
-            <img src="https://img.freepik.com/fotos-premium/exoticos-paisajes-playa-tropical-suenos_287743-1067.jpg?semt=ais_hybrid&w=740" alt="Playa">
+            <img src="https://img.freepik.com/fotos-premium/exoticos-paisajes-playa-tropical-suenos_287743-1067.jpg?semt=ais_hybrid&w=740"
+                alt="Playa">
             <p>Playa Tropical</p>
         </div>
         <div class="destino">
-            <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/15/0a/a8/57/photo4jpg.jpg?w=500&h=-1&s=1" alt="Montaña">
+            <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/15/0a/a8/57/photo4jpg.jpg?w=500&h=-1&s=1"
+                alt="Montaña">
             <p>Montañas en Perú</p>
         </div>
         <div class="destino">
-            <img src="https://media.istockphoto.com/id/1048358188/es/foto/edificio-moderno-en-par%C3%ADs.jpg?s=612x612&w=0&k=20&c=QLRuhNUcz071stYyThDVoCBSkGOFNV5M-9cx7TUhX_c=" alt="Ciudad">
+            <img src="https://media.istockphoto.com/id/1048358188/es/foto/edificio-moderno-en-par%C3%ADs.jpg?s=612x612&w=0&k=20&c=QLRuhNUcz071stYyThDVoCBSkGOFNV5M-9cx7TUhX_c="
+                alt="Ciudad">
             <p>Ciudad Moderna</p>
         </div>
     </div>
@@ -83,4 +81,3 @@
 <footer>
     <p>&copy; 2025 MochilaTrips - Todos los derechos reservados</p>
 </footer>
-
