@@ -25,7 +25,7 @@
     top: 20px;
     right: 20px;
     padding: 10px 20px;
-    background-color: #007bff;
+    background-color: #0077b6;
     /* Azul moderno */
     color: white;
     border: none;
@@ -39,7 +39,7 @@
 
 /*Boton inicio sesion*/
 .login:hover {
-    background-color: #0056b3;
+    background-color: #0077b6;
     transform: scale(1.05);
 }
 
