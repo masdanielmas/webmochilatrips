@@ -19,6 +19,30 @@
     font-weight: bold;
 }
 
+/*Boton inicio sesion*/
+.login {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    /* Azul moderno */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    z-index: 1000;
+}
+
+/*Boton inicio sesion*/
+.login:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
 /* Contenedor del contenido desplegable */
 .dropdown-content {
     position: absolute;
