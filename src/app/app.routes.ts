@@ -3,11 +3,13 @@ import { InicioComponent } from './components/inicio/inicio.component';
 import { DestinosComponent } from './components/destinos/destinos.component';
 import { PlanesComponent } from './components/planes/planes.component';
 import { ReservasComponent } from './components/reservas/reservas.component';
+import { UserComponent } from './components/user/user.component';
 
 export const routes: Routes = [
     {path: 'inicio', component: InicioComponent},
     {path: 'destinos', component: DestinosComponent},
     {path: 'planes', component: PlanesComponent},
-    {path: 'reservas', component: ReservasComponent}
+    {path: 'reservas', component: ReservasComponent},
+    {path: 'user', component: UserComponent}
 ];
 
