@@ -6,6 +6,7 @@ import { ReservasComponent } from './components/reservas/reservas.component';
 import { UserComponent } from './components/user/user.component';
 import { LoginComponent } from './components/login/login.component';
 
+
 export const routes: Routes = [
     {path: 'inicio', component: InicioComponent},
     {path: 'destinos', component: DestinosComponent},

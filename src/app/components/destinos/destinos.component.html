@@ -1,69 +1,112 @@
 <!-- Navbar -->
 <header>
-    <nav>
-        <div class="logo-container">
-            <img src="assets/logomochila.jpg" alt="Logo de MochilaTrips" class="logo" />
-        </div>
-        <ul>
-            <li><a href="/inicio">Inicio</a></li>
-            <li><a href="/destinos">Destinos</a></li>
-            <li><a href="/planes">Planes</a></li>
-            <li><a href="/usuario">Perfil</a></li>
-            <li><a href="/inicio">Cerrar Sesión</a></li>
-        </ul>
-    </nav>
+  <nav>
+    <div class="logo-container">
+      <img src="assets/logomochila.jpg" alt="Logo de MochilaTrips" class="logo" />
+    </div>
+    <ul>
+      <li><a href="/inicio">Inicio</a></li>
+      <li><a href="/destinos">Destinos</a></li>
+      <li><a href="/planes">Planes</a></li>
+      <li><a href="/usuario">Perfil</a></li>
+      <li><a href="/inicio">Cerrar Sesión</a></li>
+    </ul>
+  </nav>
 </header>
 
 <!-- Sección de Búsqueda -->
 <section class="busqueda-destinos">
-    <h2>Explora Destinos</h2>
-    <input type="text" id="buscador" placeholder="Buscar destino..." onkeyup="filtrarDestinos()" />
-    <select id="filtro-categoria">
-        <option value="todos">Todos</option>
-        <option value="playa">Playa</option>
-        <option value="montaña">Montaña</option>
-        <option value="ciudad">Ciudad</option>
-    </select>
+  <h2>Explora Destinos</h2>
+  <input
+    type="text"
+    placeholder="Buscar destino..."
+    [(ngModel)]="filtroTexto"
+    (keyup.enter)="buscar()"
+  />
+  <select [(ngModel)]="filtroCategoria">
+    <option value="todos">Todos</option>
+    <option value="playa">Playa</option>
+    <option value="montaña">Montaña</option>
+    <option value="ciudad">Ciudad</option>
+  </select>
 </section>
 
 <!-- Lista de Destinos -->
 <section class="lista-destinos">
-    <h2>Destinos Populares</h2>
-    <div class="destinos">
-        <div class="destino" data-categoria="playa">
-            <img src="assets/playa.jpg" alt="Playa" />
-            <p>🏝 Playa Tropical</p>
-        </div>
-        <div class="destino" data-categoria="montaña">
-            <img src="assets/montana.jpg" alt="Montaña" />
-            <p>🏔 Montañas en Perú</p>
-        </div>
-        <div class="destino" data-categoria="ciudad">
-            <img src="assets/ciudad.jpg" alt="Ciudad" />
-            <p>🌆 Ciudad Moderna</p>
-        </div>
+  <h2>Destinos Populares</h2>
+  <div class="destinos">
+    <div
+      class="destino"
+      *ngFor="let destino of destinosFiltrados()"
+      [attr.data-categoria]="destino.categoria"
+    >
+      <img [src]="destino.imagen" [alt]="destino.nombre" />
+      <p>
+        {{
+          destino.nombre === 'Playa Tropical'
+            ? '🏝 '
+            : destino.nombre === 'Montañas en Perú'
+            ? '🏔 '
+            : destino.nombre === 'Ciudad Moderna'
+            ? '🌆 '
+            : ''
+        }}
+        {{ destino.nombre }}
+      </p>
     </div>
+  </div>
 </section>
 
 <!-- Comparación de Destinos -->
 <section class="comparacion-destinos">
-    <h2>Comparar Destinos</h2>
-    <p>Elige dos destinos para compararlos</p>
-    <select id="destino1">
-        <option value="playa">Playa Tropical</option>
-        <option value="montaña">Montañas en Perú</option>
-        <option value="ciudad">Ciudad Moderna</option>
+  <h2>Comparar Destinos</h2>
+  <p>Elige dos destinos para compararlos:</p>
+
+  <div class="comparador-controles">
+    <select [(ngModel)]="destino1">
+      <option *ngFor="let destino of destinos" [value]="destino.nombre">
+        {{ destino.nombre }}
+      </option>
     </select>
-    <select id="destino2">
-        <option value="playa">Playa Tropical</option>
-        <option value="montaña">Montañas en Perú</option>
-        <option value="ciudad">Ciudad Moderna</option>
+
+    <select [(ngModel)]="destino2">
+      <option *ngFor="let destino of destinos" [value]="destino.nombre">
+        {{ destino.nombre }}
+      </option>
     </select>
-    <button class="btn" onclick="compararDestinos()">Comparar</button>
-    <div id="resultado-comparacion"></div>
+
+    <button class="btn" (click)="compararDestinos()">Comparar</button>
+  </div>
+
+  <div *ngIf="resultadoComparacion">
+    <!-- Opción 1: Tarjetas visuales -->
+    <div class="tarjetas-comparacion">
+      <div class="card" *ngIf="comparacion[0]">
+        <img [src]="comparacion[0].imagen" [alt]="comparacion[0].nombre" />
+        <h3>{{ comparacion[0].nombre }}</h3>
+        <p>Categoría: {{ comparacion[0].categoria }}</p>
+        <p>Puntuación: {{ getEstrellas(comparacion[0].puntuacion) }}</p>
+      </div>
+      <div class="card" *ngIf="comparacion[1]">
+        <img [src]="comparacion[1].imagen" [alt]="comparacion[1].nombre" />
+        <h3>{{ comparacion[1].nombre }}</h3>
+        <p>Categoría: {{ comparacion[1].categoria }}</p>
+        <p>Puntuación: {{ getEstrellas(comparacion[1].puntuacion) }}</p>
+      </div>
+    </div>
+
+    <!-- Opción 2: Gráfico de comparación -->
+    <canvas id="graficoComparacion" width="400" height="200"></canvas>
+
+    <!-- Opción 3: Ranking -->
+    <div class="ranking-comparacion">
+      <h4>Resultado:</h4>
+      <p>{{ resultadoComparacion }}</p>
+    </div>
+  </div>
 </section>
 
 <!-- Footer -->
 <footer>
-    <p>&copy; 2025 MochilaTrips - Todos los derechos reservados</p>
+  <p>&copy; 2025 MochilaTrips - Todos los derechos reservados</p>
 </footer>
