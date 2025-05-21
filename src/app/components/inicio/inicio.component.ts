@@ -1,4 +1,6 @@
 import { Component, HostListener } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-inicio',
