@@ -133,7 +133,7 @@ export class DestinosComponent implements AfterViewInit {
             titleColor: '#fff',
             bodyColor: '#fff',
             callbacks: {
-              label: context => `⭐ ${context.raw} estrellas`
+              label: (context: { raw: any; }) => `⭐ ${context.raw} estrellas`
             }
           },
           title: {
@@ -152,7 +152,7 @@ export class DestinosComponent implements AfterViewInit {
             max: 5,
             ticks: {
               stepSize: 1,
-              callback: value => `${value}⭐`,
+              callback: (value: any) => `${value}⭐`,
               color: '#555'
             },
             title: {
