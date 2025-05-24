@@ -1,34 +1,89 @@
-<div class="container">
-    <h2>Registro de Usuario</h2>
-    <form (ngSubmit)="newUserEntry()" #form="ngForm">
-        <label for="usuario">Usuario</label>
-        <input type="text" id="usuario" name="usuario" [(ngModel)]="userForm.usuario" required />
+<div class="user-registration-container">
+    <h2>Registro de Nuevo Usuario</h2>
 
-        <label for="correo">Correo</label>
-        <input type="email" id="correo" name="correo" [(ngModel)]="userForm.correo" required />
+    <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
 
-        <label for="clave">Clave</label>
-        <input type="password" id="clave" name="clave" [(ngModel)]="userForm.clave" required />
+        <div class="form-group">
+            <label for="usuario">Usuario:</label>
+            <input type="text" id="usuario" name="usuario" [(ngModel)]="newUser.usuario" required minlength="3">
+            <div *ngIf="userForm.controls['usuario']?.invalid && userForm.controls['usuario']?.touched"
+                class="error-message">
+                El usuario es **requerido** y debe tener al menos 3 caracteres.
+            </div>
+        </div>
 
-        <label for="nombre">Nombre</label>
-        <input type="text" id="nombre" name="nombre" [(ngModel)]="userForm.nombre" required />
+        <div class="form-group">
+            <label for="correo">Correo Electrónico:</label>
+            <input type="email" id="correo" name="correo" [(ngModel)]="newUser.correo" required email>
+            <div *ngIf="userForm.controls['correo']?.invalid && userForm.controls['correo']?.touched"
+                class="error-message">
+                Por favor, ingresa un correo electrónico **válido** y es requerido.
+            </div>
+        </div>
 
-        <label for="telefono">Teléfono</label>
-        <input type="tel" id="telefono" name="telefono" [(ngModel)]="userForm.telefono" required />
+        <div class="form-group">
+            <label for="clave">Contraseña:</label>
+            <input type="password" id="clave" name="clave" [(ngModel)]="newUser.clave" required minlength="6">
+            <div *ngIf="userForm.controls['clave']?.invalid && userForm.controls['clave']?.touched"
+                class="error-message">
+                La contraseña es **requerida** y debe tener al menos 6 caracteres.
+            </div>
+        </div>
 
-        <label for="direccion">Dirección</label>
-        <input type="text" id="direccion" name="direccion" [(ngModel)]="userForm.direccion" required />
+        <div class="form-group">
+            <label for="nombre">Nombre Completo:</label>
+            <input type="text" id="nombre" name="nombre" [(ngModel)]="newUser.nombre" required>
+            <div *ngIf="userForm.controls['nombre']?.invalid && userForm.controls['nombre']?.touched"
+                class="error-message">
+                El nombre es **requerido**.
+            </div>
+        </div>
 
-        <label for="ciudad">Ciudad</label>
-        <input type="text" id="ciudad" name="ciudad" [(ngModel)]="userForm.ciudad" required />
+        <div class="form-group">
+            <label for="telefono">Teléfono:</label>
+            <input type="tel" id="telefono" name="telefono" [(ngModel)]="newUser.telefono" required>
+            <div *ngIf="userForm.controls['telefono']?.invalid && userForm.controls['telefono']?.touched"
+                class="error-message">
+                El teléfono es **requerido**.
+            </div>
+        </div>
 
-        <label for="preferencias_de_viaje">Preferencias de Viaje</label>
-        <input type="text" id="preferencias_de_viaje" name="preferencias_de_viaje"
-            [(ngModel)]="userForm.preferencias_de_viaje" required />
+        <div class="form-group">
+            <label for="direccion">Dirección:</label>
+            <input type="text" id="direccion" name="direccion" [(ngModel)]="newUser.direccion" required>
+            <div *ngIf="userForm.controls['direccion']?.invalid && userForm.controls['direccion']?.touched"
+                class="error-message">
+                La dirección es **requerida**.
+            </div>
+        </div>
 
-        <label for="rol">Rol</label>
-        <input type="text" id="rol" name="rol" [(ngModel)]="userForm.rol" value="Usuario" readonly />
+        <div class="form-group">
+            <label for="ciudad">Ciudad:</label>
+            <input type="text" id="ciudad" name="ciudad" [(ngModel)]="newUser.ciudad" required>
+            <div *ngIf="userForm.controls['ciudad']?.invalid && userForm.controls['ciudad']?.touched"
+                class="error-message">
+                La ciudad es **requerida**.
+            </div>
+        </div>
 
-        <button type="submit">Registrar</button>
+        <div class="form-group">
+            <label for="preferencias_de_viaje">Preferencias de Viaje:</label>
+            <input type="text" id="preferencias_de_viaje" name="preferencias_de_viaje"
+                [(ngModel)]="newUser.preferencias_de_viaje">
+        </div>
+
+        <div class="form-group">
+            <label for="rol">Rol:</label>
+            <input type="text" id="rol" name="rol" [(ngModel)]="newUser.rol" required>
+            <div *ngIf="userForm.controls['rol']?.invalid && userForm.controls['rol']?.touched" class="error-message">
+                El rol es **requerido**.
+            </div>
+        </div>
+
+        <button type="submit" [disabled]="!userForm.form.valid">Registrar Usuario</button>
     </form>
+
+    <div *ngIf="message" [class.success]="!isError" [class.error]="isError" class="message">
+        {{ message }}
+    </div>
 </div>
