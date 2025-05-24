@@ -1,6 +1,6 @@
 /* Contenedor general de cada destino */
 .destino-card {
-  background: linear-gradient(135deg, #f9f9f9, #e0f7fa);
+  background: linear-gradient(135deg, #f9f9f9, #9fc6ff);
   border-radius: 15px;
   box-shadow: 0 10px 20px rgba(0,0,0,0.1);
   padding: 25px 30px;
@@ -60,7 +60,7 @@
 /* Información de cada ítem */
 .info-item {
   background: #ffffffcc; /* blanco con un poco de transparencia */
-  border: 2.5px solid #00796b;
+  border: 2.5px solid #256b99;
   border-radius: 10px;
   padding: 12px 18px;
   margin-bottom: 12px;
