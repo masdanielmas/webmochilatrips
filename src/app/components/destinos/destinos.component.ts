@@ -19,4 +19,3 @@ export class DestinosComponent implements OnInit {
     });
   }
 }
-
