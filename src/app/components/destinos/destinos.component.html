@@ -2,109 +2,37 @@
 <header>
   <nav>
     <div class="logo-container">
-      <img src="assets/logomochila.jpg" alt="Logo de MochilaTrips" class="logo" />
+      <img src="assets/logomochila.jpg" alt="Logo de MochilaTrips" class="logo">
     </div>
     <ul>
-      <li><a href="/inicio">Inicio</a></li>
-      <li><a href="/destinos">Destinos</a></li>
-      <li><a href="/planes">Planes</a></li>
-      <li><a href="/usuario">Perfil</a></li>
-      <li><a href="/inicio">Cerrar Sesión</a></li>
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="destinos.html">Destinos</a></li>
+      <li><a href="plan-viaje.html">Planes</a></li>
+      <li><a href="usuario.html">Perfil</a></li>
+      <li><a href="index.html" onclick="cerrarSesion()">Cerrar Sesión</a></li>
     </ul>
   </nav>
 </header>
 
-<!-- Sección de Búsqueda -->
-<section class="busqueda-destinos">
-  <h2>Explora Destinos</h2>
-  <input
-    type="text"
-    placeholder="Buscar destino..."
-    [(ngModel)]="filtroTexto"
-    (keyup.enter)="buscar()"
-  />
-  <select [(ngModel)]="filtroCategoria">
-    <option value="todos">Todos</option>
-    <option value="playa">Playa</option>
-    <option value="montaña">Montaña</option>
-    <option value="ciudad">Ciudad</option>
-  </select>
-</section>
+<div class="destinos-container">
+  <div *ngFor="let destino of destinos" class="destino-card">
+    <div class="imagenes">
+      <img *ngIf="destino.imagen1" class="img-grande" [src]="destino.imagen1" alt="Imagen 1">
+    </div>
+    <h2>{{ destino.pais }} - {{ destino.ciudad }}</h2>
+    <p><strong>Precio:</strong> {{ destino.precio }}</p>
+    <p><strong>Duración:</strong> {{ destino.duracion || 'No especificada' }}</p>
+    <p><strong>Desde:</strong> {{ destino.fecha_inicio }}</p>
+    <p><strong>Hasta:</strong> {{ destino.fecha_final }}</p>
+    <p><strong>Descripción:</strong> {{ destino.descripcion }}</p>
 
-<!-- Lista de Destinos -->
-<section class="lista-destinos">
-  <h2>Destinos Populares</h2>
-  <div class="destinos">
-    <div
-      class="destino"
-      *ngFor="let destino of destinosFiltrados()"
-      [attr.data-categoria]="destino.categoria"
-    >
-      <img [src]="destino.imagen" [alt]="destino.nombre" />
-      <p>
-        {{
-          destino.nombre === 'Playa Tropical'
-            ? '🏝 '
-            : destino.nombre === 'Montañas en Perú'
-            ? '🏔 '
-            : destino.nombre === 'Ciudad Moderna'
-            ? '🌆 '
-            : ''
-        }}
-        {{ destino.nombre }}
-      </p>
+    <div class="imagenes">
+      <img *ngIf="destino.imagen2" [src]="destino.imagen2" alt="Imagen 2">
+      <img *ngIf="destino.imagen3" [src]="destino.imagen3" alt="Imagen 3">
+      <img *ngIf="destino.imagen4" [src]="destino.imagen4" alt="Imagen 4">
     </div>
   </div>
-</section>
-
-<!-- Comparación de Destinos -->
-<section class="comparacion-destinos">
-  <h2>Comparar Destinos</h2>
-  <p>Elige dos destinos para compararlos:</p>
-
-  <div class="comparador-controles">
-    <select [(ngModel)]="destino1">
-      <option *ngFor="let destino of destinos" [value]="destino.nombre">
-        {{ destino.nombre }}
-      </option>
-    </select>
-
-    <select [(ngModel)]="destino2">
-      <option *ngFor="let destino of destinos" [value]="destino.nombre">
-        {{ destino.nombre }}
-      </option>
-    </select>
-
-    <button class="btn" (click)="compararDestinos()">Comparar</button>
-  </div>
-
-  <div *ngIf="resultadoComparacion">
-    <!-- Opción 1: Tarjetas visuales -->
-    <div class="tarjetas-comparacion">
-      <div class="card" *ngIf="comparacion[0]">
-        <img [src]="comparacion[0].imagen" [alt]="comparacion[0].nombre" />
-        <h3>{{ comparacion[0].nombre }}</h3>
-        <p>Categoría: {{ comparacion[0].categoria }}</p>
-        <p>Puntuación: {{ getEstrellas(comparacion[0].puntuacion) }}</p>
-      </div>
-      <div class="card" *ngIf="comparacion[1]">
-        <img [src]="comparacion[1].imagen" [alt]="comparacion[1].nombre" />
-        <h3>{{ comparacion[1].nombre }}</h3>
-        <p>Categoría: {{ comparacion[1].categoria }}</p>
-        <p>Puntuación: {{ getEstrellas(comparacion[1].puntuacion) }}</p>
-      </div>
-    </div>
-
-    <!-- Opción 2: Gráfico de comparación -->
-    <canvas id="graficoComparacion" width="400" height="200"></canvas>
-
-    <!-- Opción 3: Ranking -->
-    <div class="ranking-comparacion">
-      <h4>Resultado:</h4>
-      <p>{{ resultadoComparacion }}</p>
-    </div>
-  </div>
-</section>
+</div>
 
 <!-- Footer -->
 <footer>

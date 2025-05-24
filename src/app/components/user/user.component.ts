@@ -11,6 +11,7 @@ import { UserService } from '../../services/user.service';
 })
 export class UserComponent implements OnInit {
 
+
   userList: any[] = [];
 
   constructor(private userService: UserService) { }
@@ -24,4 +25,7 @@ export class UserComponent implements OnInit {
       this.userList = data;
     });
   }
+
+  
+
 }
