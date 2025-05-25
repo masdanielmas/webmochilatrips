@@ -22,6 +22,12 @@ export interface User {
   providedIn: 'root'
 })
 export class UserService {
+  updateUser(usuario: User) {
+    throw new Error('Method not implemented.');
+  }
+  getUser(): any {
+    throw new Error('Method not implemented.');
+  }
   private apiUrl = 'http://localhost:3001/api/users'; // <-- ¡Ajusta esta URL a tu backend!
 
   constructor(private http: HttpClient) { }

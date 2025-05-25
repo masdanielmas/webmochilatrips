@@ -1,0 +1,68 @@
+<div *ngIf="usuario; else noUser" class="profile-container">
+
+    <div *ngIf="!editando; else editarTemplate">
+        <div class="profile-image">
+            <img [src]="usuario.foto || 'assets/default-user.png'" alt="Foto de {{ usuario.nombre }}" />
+        </div>
+
+        <h2>Perfil de {{ usuario.nombre }}</h2>
+        <p><strong>Usuario:</strong> {{ usuario.usuario }}</p>
+        <p><strong>Correo:</strong> {{ usuario.correo }}</p>
+        <p><strong>Teléfono:</strong> {{ usuario.telefono }}</p>
+        <p><strong>Dirección:</strong> {{ usuario.direccion }}</p>
+        <p><strong>Ciudad:</strong> {{ usuario.ciudad }}</p>
+        <p><strong>Preferencias de Viaje:</strong> {{ usuario.preferencias_de_viaje }}</p>
+        <p><strong>Rol:</strong> {{ usuario.rol }}</p>
+
+        <button (click)="toggleEditar()">Editar Perfil</button>
+    </div>
+
+    <ng-template #editarTemplate>
+        <h2>Editar Perfil</h2>
+        <label>
+            Nombre:
+            <input [(ngModel)]="usuario.nombre" />
+        </label>
+
+        <label>
+            Usuario:
+            <input [(ngModel)]="usuario.usuario" />
+        </label>
+
+        <label>
+            Correo:
+            <input type="email" [(ngModel)]="usuario.correo" />
+        </label>
+
+        <label>
+            Teléfono:
+            <input [(ngModel)]="usuario.telefono" />
+        </label>
+
+        <label>
+            Dirección:
+            <input [(ngModel)]="usuario.direccion" />
+        </label>
+
+        <label>
+            Ciudad:
+            <input [(ngModel)]="usuario.ciudad" />
+        </label>
+
+        <label>
+            Preferencias de Viaje:
+            <input [(ngModel)]="usuario.preferencias_de_viaje" />
+        </label>
+
+        <!-- Mostrar el rol solo como texto, no editable -->
+        <p><strong>Rol:</strong> {{ usuario.rol }}</p>
+
+        <button (click)="guardar()">Guardar</button>
+        <button (click)="toggleEditar()">Cancelar</button>
+    </ng-template>
+
+</div>
+
+<ng-template #noUser>
+    <p>No hay usuario cargado. Por favor, inicia sesión o regístrate.</p>
+</ng-template>
