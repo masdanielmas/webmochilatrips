@@ -1,9 +1,9 @@
 // src/app/services/user.service.ts
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
-// ¡ASEGÚRATE DE QUE ESTA INTERFAZ ESTÉ DEFINIDA EN TU user.service.ts!
+// Interfaz del usuario
 export interface User {
   usuario: string;
   correo: string;
@@ -14,26 +14,57 @@ export interface User {
   ciudad: string;
   preferencias_de_viaje: string;
   rol: string;
-  _id?: string; // Opcional: si tu backend devuelve un ID
-  createdAt?: Date; // Opcional: si tu backend devuelve una fecha de creación
+  foto?: string;       // Opcional: por si manejas imagen de perfil
+  _id?: string;
+  createdAt?: Date;
 }
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  updateUser(usuario: User) {
-    throw new Error('Method not implemented.');
-  }
-  getUser(): any {
-    throw new Error('Method not implemented.');
-  }
-  private apiUrl = 'http://localhost:3001/api/users'; // <-- ¡Ajusta esta URL a tu backend!
+  private apiUrl = 'http://localhost:3001/api/users';
+  private userKey = 'usuario_actual';  // clave para localStorage
+  private user: User | null = null;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    // Al cargar el servicio, intenta recuperar el usuario desde localStorage
+    const userData = localStorage.getItem(this.userKey);
+    if (userData) {
+      this.user = JSON.parse(userData);
+    }
+  }
 
+  // Crear nuevo usuario
   createUser(userData: User): Observable<User> {
     console.log('Enviando datos de usuario al backend:', userData);
     return this.http.post<User>(this.apiUrl, userData);
+  }
+
+  // Obtener usuario desde memoria
+  getUser(): User | null {
+    return this.user;
+  }
+
+  // Guardar usuario en memoria y localStorage
+  setUser(user: User): void {
+    this.user = { ...user };
+    localStorage.setItem(this.userKey, JSON.stringify(this.user));
+  }
+
+  // Actualizar usuario en el backend
+  updateUser(user: User): Observable<User> {
+    // Verificamos que el usuario tenga _id para poder actualizarlo
+    if (!user._id) {
+      throw new Error('El usuario no tiene ID, no se puede actualizar');
+    }
+    const url = `${this.apiUrl}/${user._id}`;
+    return this.http.put<User>(url, user);
+  }
+
+  // Eliminar usuario del servicio (ej: al cerrar sesión)
+  clearUser(): void {
+    this.user = null;
+    localStorage.removeItem(this.userKey);
   }
 }
